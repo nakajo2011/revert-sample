@@ -1,9 +1,6 @@
 pragma solidity ^0.4.18;
 
 
-pragma solidity ^0.4.18;
-
-
 contract RevertSample {
   uint256 public counter;
 
