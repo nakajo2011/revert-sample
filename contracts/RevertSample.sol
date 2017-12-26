@@ -14,6 +14,7 @@ contract RevertSample {
 
   function hoge() public {
     string memory resmsg = "";
+    message = resmsg;
     if (!lib.call(bytes4(keccak256("countup()")))) {
       assembly {
       returndatacopy(resmsg, 0x0, returndatasize)

@@ -21,6 +21,14 @@ contract('RevertSampleTest', (accounts) => {
       await instance.hoge()
       errormsg = await instance.message()
       assert.equal("over count!", errormsg)
+
+      await callee.initcount()
+      await instance.hoge()
+      result = await callee.counter()
+      errormsg = await instance.message()
+      assert.equal(1, result.toNumber())
+      assert.equal("", errormsg)
+
     });
   })
 });
