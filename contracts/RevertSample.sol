@@ -8,7 +8,7 @@ contract RevertSample {
 
   address public lib = 0x0;
 
-  function RevertSample(address libaddr) {
+  function RevertSample(address libaddr) public {
     lib = libaddr;
   }
 
@@ -17,7 +17,9 @@ contract RevertSample {
     message = resmsg;
     if (!lib.call(bytes4(keccak256("countup()")))) {
       assembly {
-      returndatacopy(resmsg, 0x0, returndatasize)
+      let rdatasize := returndatasize
+      returndatacopy(resmsg, 0x0, rdatasize)
+      mstore(0x40, add(rdatasize, resmsg)) // free pointerを更新
       }
       message = resmsg;
     }

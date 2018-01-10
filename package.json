@@ -7,11 +7,14 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/truffle test",
+    "coverage": "./node_modules/.bin/solidity-coverage"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "solidity-coverage": "^0.4.8",
+    "truffle": "^4.0.4",
     "truffle-hdwallet-provider": "0.0.3"
   }
 }
